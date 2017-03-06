@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Göltürkbükü Sitesi</title>
+    <title>Yıltur Mimarlık</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -31,7 +31,7 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
     <!-- jQuery 2.1.4 -->
     <script src="{{ asset('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
 
@@ -130,168 +130,58 @@
                 </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-files-o"></i>
-                        <span>Yönetim</span>
+                        <i class="fa fa-phone"></i> <span>Proje</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        @if(Auth::user()->isAdmin)
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-phone"></i> <span>SMS Bilgilendirme</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="/sms-gonder"><i class="fa fa-circle-o"></i> SMS Gönder</a></li>
-                                    <li><a href="/sms-goruntule"><i class="fa fa-circle-o"></i> SMS Görüntüle</a></li>
-                                </ul>
-                            </li>
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-area-chart"></i> <span>Şikayet & Öneri</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="/sikayetler"><i class="fa fa-circle-o"></i> Şikayetler</a></li>
-                                    <li><a href="/oneriler"><i class="fa fa-circle-o"></i> Öneriler</a></li>
-                                </ul>
-                            </li>
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-bar-chart"></i> <span>Anket</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="/anket-ekle"><i class="fa fa-circle-o"></i> Anket Ekle</a></li>
-                                    <li><a href="/anketler"><i class="fa fa-circle-o"></i> Anket Düzenle/Sil</a></li>
-                                </ul>
-                            </li>
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-files-o"></i> <span>Dosya Paylaşım</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="/dosya-ekle"><i class="fa fa-circle-o"></i> Dosya Ekle</a></li>
-                                    <li><a href="/dosya-duzenle"><i class="fa fa-circle-o"></i> Dosya Düzenle/Sil</a></li>
-                                    <li><a href="/gelen-dosyalar"><i class="fa fa-circle-o"></i> Dosya Gör</a></li>
-                                </ul>
-                            </li>
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-user"></i>
-                                    <span>Üyeler</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="/uye-ekle"><i class="fa fa-circle-o"></i> Üye Ekle</a></li>
-                                    <li><a href="/uye-duzenle"><i class="fa fa-circle-o"></i> Üye Düzenle/Sil</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-book"></i>
-                                    <span>Yönetim Duyuruları</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="/user-uyuru-ekle"><i class="fa fa-circle-o"></i> Duyuru Ekle</a></li>
-                                    <li><a href="/duyuru-duzenle?isUser=1"><i class="fa fa-circle-o"></i> Duyuru Düzenle/Sil</a></li>
-                                </ul>
-                            </li>
-                        @else
-                            <li><a href="/duyuru-duzenle?isUser=1"><i class="fa fa-circle-o"></i> Yönetim Duyurular</a></li>
-                            <li class="treeview">
-                                <a href="/dosyalar">
-                                    <i class="fa fa-files-o"></i> <span>Dosyalar</span>
-                                </a>
-                            </li>
-                            <li class="treeview">
-                                <a href="/kullanici-anket">
-                                    <i class="fa fa-bar-chart"></i> <span>Anketler</span>
-                                </a>
-                            </li>
-
-                            <li class="treeview">
-                                <a href="/kullanici-sikayet-ekle">
-                                    <i class="fa fa-bar-chart"></i> <span>Şikayet Ekle</span>
-                                </a>
-                            </li>
-                            <li class="treeview">
-                                <a href="/kullanici-oneri-ekle">
-                                    <i class="fa fa-bar-chart"></i> <span>Öneri Ekle</span>
-                                </a>
-                            </li>
-                        @endif
+                        <li><a href="/proje-ekle"><i class="fa fa-circle-o"></i> Proje Ekle</a></li>
+                        <li><a href="/projeler"><i class="fa fa-circle-o"></i> Proje Düzenle/Sil</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-files-o"></i>
-                        <span>Sipariş</span>
+                        <i class="fa fa-area-chart"></i> <span>Sözleşme</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        @if(Auth::user()->isAdmin)
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-book"></i>
-                                    <span>Ürünler</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="/urun-ekle"><i class="fa fa-circle-o"></i> Ürün Ekle</a></li>
-                                    <li><a href="/urun-duzenle"><i class="fa fa-circle-o"></i> Ürün Düzenle/Sil</a></li>
-                                </ul>
-                            </li>
-                            <li class="treeview">
-                                <a href="/excel-veri">
-                                    <i class="fa fa-book"></i>
-                                    <span>Excel Veri Aktar</span>
-                                </a>
-                            </li>
-                            <li class="treeview">
-                                <a href="/kategorilendir">
-                                    <i class="fa fa-book"></i>
-                                    <span>Ürün Kategorilendirme</span>
-                                </a>
-                            </li>
-                            <li class="treeview">
-                                <a href="/siparis-ekle">
-                                    <i class="fa fa-bar-chart"></i> <span>Siparişler</span>
-                                </a>
-                            </li>
-                            <li class="treeview">
-                                <a href="/onaylanan-siparisler">
-                                    <i class="fa fa-bar-chart"></i> <span>Onaylanan Siparişler</span>
-                                </a>
-                            </li>
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-book"></i>
-                                    <span>Sipariş Duyuruları</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="/duyuru-ekle"><i class="fa fa-circle-o"></i> Duyuru Ekle</a></li>
-                                    <li><a href="/duyuru-duzenle?isUser=0"><i class="fa fa-circle-o"></i> Duyuru Düzenle/Sil</a></li>
-                                </ul>
-                            </li>
-                        @else
-                            <li class="treeview">
-                                <a href="/urunler">
-                                    <i class="fa fa-shopping-basket"></i> <span>Ürünler</span>
-                                </a>
-                            </li>
-                            <li class="treeview">
-                                <a href="/sepet">
-                                    <i class="fa fa-shopping-basket"></i> <span>Sepetim</span>
-                                </a>
-                            </li>
-                            <li><a href="/duyuru-duzenle?isUser=0"><i class="fa fa-circle-o"></i> Sipariş Duyurular</a></li>
-                        @endif
+                        <li><a href="/sozlesme-ekle"><i class="fa fa-circle-o"></i> Sözleşme Ekle</a></li>
+                        <li><a href="/sozlesmeler"><i class="fa fa-circle-o"></i> Sözleşme Düzenle/Sil</a></li>
                     </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-bar-chart"></i> <span>Keşif</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/kesif-ekle"><i class="fa fa-circle-o"></i> Keşif Ekle</a></li>
+                        <li><a href="/kesifler"><i class="fa fa-circle-o"></i> Keşif Düzenle/Sil</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-bar-chart"></i> <span>Hakediş</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/hakedif-ekle"><i class="fa fa-circle-o"></i> Hakediş Ekle</a></li>
+                        <li><a href="/hakedisler"><i class="fa fa-circle-o"></i> Hakediş Düzenle/Sil</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-user"></i> <span>Kullanıcılar</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/kullanici-ekle"><i class="fa fa-circle-o"></i> Kullanıcı Ekle</a></li>
+                        <li><a href="/kullanicilar"><i class="fa fa-circle-o"></i> Kullanıcı Düzenle/Sil</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="/satin-alma">
+                        <i class="fa fa-bar-chart"></i> <span>Satın Alma</span>
+                    </a>
                 </li>
                 <li class="treeview">
                     <a href="/cikis">
