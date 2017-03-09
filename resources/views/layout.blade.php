@@ -53,7 +53,7 @@
         <!-- Logo -->
         <a href="anasayfa" class="logo">
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Göltürkbükü Sitesi</b></span>
+            <span class="logo-lg"><b>Yıltur Mimarlık</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -79,24 +79,6 @@
                                 </p>
                             </li>
                             <!-- Menu Body -->
-                            @if(Auth::user()->isAdmin)
-                                <li class="user-body">
-                                    <div class="col-xs-6 text-center">
-                                        <a href="/uye-duzenle">Üyeler</a>
-                                    </div>
-                                </li>
-                                <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="/uye-duzenle" class="btn btn-default btn-flat">Profil</a>
-                                    </div>
-                                    <div class="pull-right">
-                                        <a href="/cikis" class="btn btn-default btn-flat">Çıkış Yap</a>
-                                    </div>
-                                </li>
-                            @else
-
-                            @endif
                         </ul>
                     </li>
                     <!-- Control Sidebar Toggle Button -->

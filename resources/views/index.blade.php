@@ -5,7 +5,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Deniz Sitesi
+                Yıltur Mimarlık
             </h1>
 
         </section>
