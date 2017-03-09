@@ -48,7 +48,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-red sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
@@ -113,7 +113,7 @@
                 </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-phone"></i> <span>Proje</span>
+                        <i class="fa fa-building"></i> <span>Proje</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
@@ -123,7 +123,7 @@
                 </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-area-chart"></i> <span>Sözleşme</span>
+                        <i class="fa fa-file"></i> <span>Sözleşme</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
@@ -133,7 +133,7 @@
                 </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-bar-chart"></i> <span>Keşif</span>
+                        <i class="fa fa-search"></i> <span>Keşif</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
@@ -143,12 +143,23 @@
                 </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-bar-chart"></i> <span>Hakediş</span>
+                        <i class="fa fa-tasks"></i> <span>Hakediş</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="/hakedif-ekle"><i class="fa fa-circle-o"></i> Hakediş Ekle</a></li>
                         <li><a href="/hakedisler"><i class="fa fa-circle-o"></i> Hakediş Düzenle/Sil</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-comment"></i> <span>Notlar</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/hakedif-ekle"><i class="fa fa-circle-o"></i> Teknik</a></li>
+                        <li><a href="/hakedisler"><i class="fa fa-circle-o"></i> Satın Alma</a></li>
+                        <li><a href="/hakedisler"><i class="fa fa-circle-o"></i> Muhasebe</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -163,12 +174,12 @@
                 </li>
                 <li class="treeview">
                     <a href="/satin-alma">
-                        <i class="fa fa-bar-chart"></i> <span>Satın Alma</span>
+                        <i class="fa fa-dollar"></i> <span>Satın Alma</span>
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="/cikis">
-                        <i class="fa fa-user"></i> <span>Çıkış Yap</span>
+                        <i class="fa fa-sign-out"></i> <span>Çıkış Yap</span>
                     </a>
                 </li>
             </ul>
