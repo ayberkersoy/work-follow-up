@@ -14,6 +14,8 @@ Route::group(['middleware' => 'auth'], function () {
         return view('proje-ekle');
     });
 
+    Route::get('sozlesme-ekle', 'ContractController@addThis');
+
     Route::get('projeler', 'ProjectController@index');
     Route::get('proje-detay/{id}', 'ProjectController@show');
 
