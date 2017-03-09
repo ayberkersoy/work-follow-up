@@ -14,6 +14,8 @@ Route::group(['middleware' => 'auth'], function () {
         return view('proje-ekle');
     });
 
+    Route::get('projeler', 'ProjectController@index');
+
     Route::post('proje-ekle', 'ProjectController@store');
 });
 

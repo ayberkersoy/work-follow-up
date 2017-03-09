@@ -9,7 +9,9 @@ class ProjectController extends Controller
 {
     public function index()
     {
+        $projects = Project::all();
 
+        return view('projeler', compact('projects'));
     }
 
     public function store(Request $request)
