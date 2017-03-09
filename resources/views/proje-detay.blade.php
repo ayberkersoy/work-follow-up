@@ -11,7 +11,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="anasayfa"><i class="fa fa-dashboard"></i> Anasayfa</a></li>
-                <li><a href="projeler">Projeler</a></li>
+                <li><a href="/projeler">Projeler</a></li>
                 <li class="active">Proje Düzenle</li>
             </ol>
         </section>
