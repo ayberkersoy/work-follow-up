@@ -9,6 +9,12 @@ Route::group(['middleware' => 'auth'], function () {
         Auth::logout();
         return redirect('/');
     });
+
+    Route::get('proje-ekle', function () {
+        return view('proje-ekle');
+    });
+
+    Route::post('proje-ekle', 'ProjectController@store');
 });
 
 Auth::routes();
