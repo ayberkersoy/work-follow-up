@@ -61,8 +61,8 @@
                                 <td>{{ $project->firm_name }}</td>
                                 <td>{{ $project->authorized }}</td>
                                 <td>
-                                    <a href="/uye-detay/{{ $project->id }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                    <form action="/uye-duzenle/{{ $project->id }}" method="post">
+                                    <a href="/proje-detay/{{ $project->id }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                    <form action="/projeler/{{ $project->id }}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o"></i></button>

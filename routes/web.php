@@ -17,6 +17,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('projeler', 'ProjectController@index');
 
     Route::post('proje-ekle', 'ProjectController@store');
+
+    Route::delete('projeler/{id}', 'ProjectController@destroy');
 });
 
 Auth::routes();

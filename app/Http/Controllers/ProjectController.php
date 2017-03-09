@@ -29,4 +29,11 @@ class ProjectController extends Controller
 
         return back();
     }
+
+    public function destroy($id)
+    {
+        Project::find($id)->delete();
+
+        return back();
+    }
 }
