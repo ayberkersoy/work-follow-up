@@ -12,4 +12,9 @@ class Note extends Model
     {
         return $this->hasMany(NoteCategory::class);
     }
+
+    public function usernote()
+    {
+        return $this->hasMany(UserNote::class);
+    }
 }
