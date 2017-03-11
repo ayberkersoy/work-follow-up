@@ -114,6 +114,26 @@
                             </tr>
                             <tr>
                                 <td>
+                                    <p>Not Kategori</p>
+                                </td>
+                                <td>
+                                    <select name="note_category_id" class="select2" style="width: 100%">
+                                        @foreach($notecategories as $notecategory)
+                                            <option value="{{ $notecategory->id }}">{{ $notecategory->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Not</p>
+                                </td>
+                                <td>
+                                    <input type="text" name="body" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <input type="submit" value="Ekle" class="btn btn-success">
                                 </td>
                             </tr>
