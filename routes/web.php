@@ -31,6 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::delete('sozlesmeler/{id}', 'ContractController@destroy');
 
+    Route::get('kesif-ekle', 'DiscoveryController@addThis');
+    Route::post('kesif-ekle', 'DiscoveryController@store');
+
 });
 
 Auth::routes();
