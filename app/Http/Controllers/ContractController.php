@@ -25,10 +25,17 @@ class ContractController extends Controller
         $path = $request->dosya->store('contracts');
         Contract::create([
             'project_id' => $request->project_id,
-            'file_path' => 'public/contracts' . $path,
+            'file_path' => 'public/' . $path,
             'file_name' => $request->dosya->getClientOriginalName()
         ]);
         return redirect('sozlesmeler');
+    }
+
+    public function show($id)
+    {
+        $contract = Contract::find($id);
+
+        return view('sozlesme-detay', compact('contract'));
     }
 
     public function destroy($id)

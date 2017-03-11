@@ -58,7 +58,7 @@
                                 <td>{{ $contract->project->project_name }}</td>
                                 <td>{{ $contract->file_name }}</td>
                                 <td>
-                                    <a href="/sozlesme-detay/{{ $contract->id }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                    <a href="/sozlesme/{{ $contract->id }}" class="btn btn-success"><i class="fa fa-eye"></i></a>
                                     <form action="/sozlesmeler/{{ $contract->id }}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
