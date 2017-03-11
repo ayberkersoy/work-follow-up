@@ -62,7 +62,7 @@
                                     </p>
                                 </td>
                                 <td>
-                                    <input type="file" name="file" class="form-control" />
+                                    <input type="file" name="dosya" class="form-control" />
                                 </td>
                             </tr>
                             <tr>

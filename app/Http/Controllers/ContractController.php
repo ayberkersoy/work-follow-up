@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contract;
 use App\Project;
 use Illuminate\Http\Request;
 
@@ -11,5 +12,16 @@ class ContractController extends Controller
     {
         $projects = Project::all();
         return view('sozlesme-ekle', compact('projects'));
+    }
+
+    public function store(Request $request)
+    {
+        $path = $request->dosya->store('');
+        Contract::create([
+            'project_id' => $request->project_id,
+            'file_path' => 'public/' . $path,
+            'file_name' => $request->dosya->getClientOriginalName()
+        ]);
+        return redirect('sozlesmeler');
     }
 }
