@@ -78,18 +78,35 @@
                                 </p>
                             </td>
                         </tr>
+                        @if(!$note->note->discovery_id == 0)
                         <tr>
                             <td>
                                 <p>
-                                    Not Kategorisi
+                                    İlgili Keşif Kalemi
                                 </p>
                             </td>
                             <td>
-                                <p>
-
-                                </p>
+                                <table class="table table-bordered table-hover table-striped">
+                                    <tr>
+                                        <td>İşin Adı</td>
+                                        <td>Açıklaması</td>
+                                        <td>Miktar</td>
+                                        <td>Birim</td>
+                                        <td>Birim Fiyat</td>
+                                        <td>Toplam Tutar</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ $note->note->dis->job }}</td>
+                                        <td>{{ $note->note->dis->description }}</td>
+                                        <td>{{ $note->note->dis->amount }}</td>
+                                        <td>{{ $note->note->dis->unit }}</td>
+                                        <td>{{ $note->note->dis->unit_price }}</td>
+                                        <td>{{ $note->note->dis->amount*$note->note->dis->unit_price }}</td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
+                        @endif
                         <tr>
                             <td>
                                 @if($note->note->status == 0)

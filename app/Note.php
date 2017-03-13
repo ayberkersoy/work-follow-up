@@ -17,4 +17,9 @@ class Note extends Model
     {
         return $this->hasMany(UserNote::class);
     }
+
+    public function dis()
+    {
+        return $this->belongsTo(DiscoveryContent::class, 'discovery_id', 'id');
+    }
 }
