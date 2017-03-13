@@ -60,7 +60,7 @@
                                     <td>{{ $note->note->content }}</td>
                                     <td>
                                         <a href="/not-detay/{{ $note->note->id }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
-                                        <form action="/satin-alma-notlar/{{ $note->note->id }}" method="post">
+                                        <form action="/notlar/{{ $note->note->id }}" method="post">
                                             {{ csrf_field() }}
                                             <button class="btn btn-success" type="submit"><i class="fa fa-check"></i></button>
                                         </form>

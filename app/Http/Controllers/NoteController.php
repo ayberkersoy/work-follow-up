@@ -124,4 +124,12 @@ class NoteController extends Controller
             ->get();
         return view('muhasebe-not', compact('notes'));
     }
+
+    public function success($id)
+    {
+        $note = Note::find($id);
+        $note->status = 1;
+        $note->save();
+        return back();
+    }
 }

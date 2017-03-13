@@ -44,7 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('satin-alma-notlar', 'NoteController@satinAlma');
     Route::get('muhasebe', 'NoteController@muhasebe');
     Route::get('notlar', 'NoteController@index');
-
+    Route::post('notlar/{id}', 'NoteController@success');
 });
 
 Auth::routes();
