@@ -11,4 +11,9 @@ class Project extends Model
     {
         return $this->hasMany(Contract::class);
     }
+
+    public function discovery()
+    {
+        return $this->hasMany(Discovery::class);
+    }
 }

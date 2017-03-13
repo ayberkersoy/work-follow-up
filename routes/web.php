@@ -32,7 +32,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('sozlesmeler/{id}', 'ContractController@destroy');
 
     Route::get('kesif-ekle', 'DiscoveryController@addThis');
-    Route::post('kesif-ekle', 'DiscoveryController@store');
+    Route::get('kesifler', 'DiscoveryController@index');
+    Route::get('proje-kesif-ekle/{project_id}/{discovery_id}', 'DiscoveryController@addContent');
+    Route::post('kesif-ekle', 'DiscoveryController@storeDiscovery');
+    Route::post('kesif', 'DiscoveryController@show');
+    Route::post('proje-kesif-ekle/{project_id}/{discovery_id}', 'DiscoveryController@storeContent');
 
 });
 

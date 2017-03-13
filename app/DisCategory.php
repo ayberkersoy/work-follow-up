@@ -10,6 +10,6 @@ class DisCategory extends Model
 
     public function discovery()
     {
-        return $this->belongsTo(Discovery::class);
+        return $this->belongsTo(Discovery::class, 'id', 'dis_category_id');
     }
 }

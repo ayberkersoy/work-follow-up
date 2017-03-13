@@ -41,35 +41,67 @@
                         <div class="alert alert-success"> {{ session()->get('success') }}</div>
                         {{ session()->forget('success') }}
                     @endif
-                    <form action="kesif-ekle" method="post" enctype="multipart/form-data">
+                    <form action="/proje-kesif-ekle/{{ $project_id }}/{{ $discovery_id }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <table class="table table-bordered">
                             <tr>
                                 <td>
-                                    <p>
-                                        Proje Adı
-                                    </p>
+                                    <p>İşin Adı</p>
                                 </td>
                                 <td>
-                                    <select name="project_id" class="select2" style="width: 100%">
-                                        @foreach($projects as $project)
-                                            <option value="{{ $project->id }}">{{ $project->project_name }}</option>
+                                    <input type="text" name="job" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Açıklama</p>
+                                </td>
+                                <td>
+                                    <input type="text" name="description" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Miktar</p>
+                                </td>
+                                <td>
+                                    <input type="text" name="amount" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Birim</p>
+                                </td>
+                                <td>
+                                    <input type="text" name="unit" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Birim Fiyat</p>
+                                </td>
+                                <td>
+                                    <input type="text" name="unit_price" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Not Kategori</p>
+                                </td>
+                                <td>
+                                    <select name="note_category_id" class="select2" style="width: 100%">
+                                        @foreach($notecategories as $notecategory)
+                                            <option value="{{ $notecategory->id }}">{{ $notecategory->name }}</option>
                                         @endforeach
                                     </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <p>
-                                        Ana Başlık
-                                    </p>
+                                    <p>Not</p>
                                 </td>
                                 <td>
-                                    <select name="dis_category_id" class="select2" style="width: 100%">
-                                        @foreach($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" name="body" class="form-control">
                                 </td>
                             </tr>
                             <tr>

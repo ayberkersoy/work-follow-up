@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DisCategory;
 use App\Discovery;
+use App\DiscoveryContent;
 use App\Note;
 use App\NoteCategory;
 use App\Project;
@@ -19,9 +20,17 @@ class DiscoveryController extends Controller
         return view('kesif-ekle', compact('projects', 'categories', 'notecategories'));
     }
 
+    public function addContent($project_id, $discovery_id)
+    {
+        $notecategories = NoteCategory::all();
+        return view('proje-kesif-ekle', compact('notecategories', 'project_id', 'discovery_id'));
+    }
+
     public function index()
     {
-        //
+        $projects = Project::all();
+
+        return view('kesifler', compact('projects'));
     }
 
     public function create()
@@ -29,11 +38,19 @@ class DiscoveryController extends Controller
         //
     }
 
-    public function store(Request $request)
+    public function storeDiscovery(Request $request)
     {
         $discovery = Discovery::create([
             'dis_category_id' => $request->dis_category_id,
-            'project_id' => $request->project_id,
+            'project_id' => $request->project_id
+        ]);
+        return redirect('proje-kesif-ekle/'.$request->project_id.'/'.$discovery->id);
+    }
+
+    public function storeContent(Request $request)
+    {
+        $content = DiscoveryContent::create([
+            'discovery_id' => $request->discovery_id,
             'job' => $request->job,
             'description' => $request->description,
             'amount' => $request->amount,
@@ -41,7 +58,7 @@ class DiscoveryController extends Controller
             'unit_price' => $request->unit_price
         ]);
         Note::create([
-            'discovery_id' => $discovery->id,
+            'discovery_id' => $content->id,
             'note_category_id' => $request->note_category_id,
             'content' => $request->body,
             'status' => 0
@@ -50,9 +67,10 @@ class DiscoveryController extends Controller
         return back();
     }
 
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $discovery = Discovery::where('project_id', $request->project_id)->get();
+        return view('kesif', compact('discovery'));
     }
 
     public function edit($id)

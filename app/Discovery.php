@@ -10,6 +10,16 @@ class Discovery extends Model
 
     public function category()
     {
-        return $this->hasMany(DisCategory::class);
+        return $this->belongsTo(DisCategory::class, 'dis_category_id', 'id');
+    }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
+    public function content()
+    {
+        return $this->hasMany(DiscoveryContent::class);
     }
 }
