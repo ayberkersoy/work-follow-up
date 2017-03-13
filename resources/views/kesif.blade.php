@@ -27,9 +27,9 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
-                            <tr>
+                            <tr style="background-color: #005927; color: #fff">
                                 <th>POZ</th>
                                 <th>İşin Adı</th>
                                 <th>Açıklama</th>
@@ -41,25 +41,23 @@
                         </thead>
                         <tbody>
                             @foreach($discovery as $item)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->category->name }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                @php
+                                    $x = 1;
+                                    $y = 1;
+                                @endphp
+                                <tr style="background-color: #8a6d3b; color: #fff">
+                                    <td><b>{{ $x++ }}</b></td>
+                                    <td colspan="6"><b>{{ $item->category->name }}</b></td>
                                 </tr>
                                 @foreach($discovery[$loop->index]->content as $value)
                                     <tr>
-                                        <td>{{ $loop->iteration }} - {{ $loop->iteration++ }}</td>
+                                        <td>{{ $x }} - {{ $y++ }}</td>
                                         <td>{{ $value->job }}</td>
                                         <td>{{ $value->description }}</td>
                                         <td>{{ $value->amount }}</td>
                                         <td>{{ $value->unit }}</td>
                                         <td>{{ $value->unit_price }}</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ $value->amount*$value->unit_price }}</td>
                                     </tr>
                                 @endforeach
                             @endforeach
