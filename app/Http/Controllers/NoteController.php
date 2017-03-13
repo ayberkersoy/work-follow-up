@@ -68,7 +68,8 @@ class NoteController extends Controller
      */
     public function show($id)
     {
-        //
+        $note = UserNote::find($id);
+        return view('not', compact('note'));
     }
 
     /**

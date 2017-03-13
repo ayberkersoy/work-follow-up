@@ -59,7 +59,7 @@
                                     <td>{{ $note->user->username }}</td>
                                     <td>{{ substr($note->note->content, 0, 100) }}</td>
                                     <td>
-                                        <a href="/not-detay/{{ $note->note->id }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                        <a href="/not/{{ $note->id }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                         <form action="/notlar/{{ $note->note->id }}" method="post">
                                             {{ csrf_field() }}
                                             <button class="btn btn-success" type="submit"><i class="fa fa-check"></i></button>
