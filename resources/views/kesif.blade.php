@@ -46,9 +46,14 @@
                                     $y = 1;
                                 @endphp
                                 <tr style="background-color: #8a6d3b; color: #fff">
-                                    <td><b>{{ $x++ }}</b></td>
+                                    <td><b>{{ $loop->iteration }}</b></td>
                                     <td colspan="6"><b>{{ $item->category->name }}</b></td>
                                 </tr>
+                                @if(!$loop->first)
+                                    @php
+                                        $x = $loop->iteration;
+                                    @endphp
+                                @endif
                                 @foreach($discovery[$loop->index]->content as $value)
                                     <tr>
                                         <td>{{ $x }} - {{ $y++ }}</td>

@@ -138,7 +138,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="/kesif-ekle"><i class="fa fa-circle-o"></i> Keşif Ekle</a></li>
-                        <li><a href="/kesifler"><i class="fa fa-circle-o"></i> Keşif Düzenle/Sil</a></li>
+                        <li><a href="/kesifler"><i class="fa fa-circle-o"></i> Keşif Gör</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
