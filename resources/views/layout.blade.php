@@ -52,7 +52,7 @@
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
-        <a href="anasayfa" class="logo">
+        <a href="/" class="logo">
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Yıltur Mimarlık</b></span>
         </a>
