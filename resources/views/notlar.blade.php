@@ -63,7 +63,7 @@
                                     <td>{{ $note->fromUser->username }}</td>
                                     <td>{{ $note->user->username }}</td>
                                     <td>{{ $note->note->category->name }}</td>
-                                    <td>{{ $note->note->content }}</td>
+                                    <td>{{ substr($note->note->content, 0, 100) }}</td>
                                     <td>
                                         <a href="/not/{{ $note->note->id }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                         <form action="/notlar/{{ $note->note->id }}" method="post">
