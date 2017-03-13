@@ -8,7 +8,10 @@ use App\DiscoveryContent;
 use App\Note;
 use App\NoteCategory;
 use App\Project;
+use App\User;
+use App\UserNote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DiscoveryController extends Controller
 {
@@ -23,7 +26,8 @@ class DiscoveryController extends Controller
     public function addContent($project_id, $discovery_id)
     {
         $notecategories = NoteCategory::all();
-        return view('proje-kesif-ekle', compact('notecategories', 'project_id', 'discovery_id'));
+        $users = User::all();
+        return view('proje-kesif-ekle', compact('notecategories', 'project_id', 'discovery_id', 'users'));
     }
 
     public function index()
@@ -57,12 +61,19 @@ class DiscoveryController extends Controller
             'unit' => $request->unit,
             'unit_price' => $request->unit_price
         ]);
-        Note::create([
+        $note = Note::create([
             'discovery_id' => $content->id,
             'note_category_id' => $request->note_category_id,
             'content' => $request->body,
             'status' => 0
         ]);
+        foreach ($request->users as $user){
+            UserNote::create([
+                'note_id' => $note->id,
+                'user_id' => $user,
+                'from_user_id' => Auth::id()
+            ]);
+        }
         session(['success' => 'Eklendi.']);
         return back();
     }

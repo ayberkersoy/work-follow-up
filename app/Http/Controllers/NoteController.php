@@ -18,8 +18,8 @@ class NoteController extends Controller
      */
     public function index()
     {
-        $notes = Note::all();
 
+        $notes = UserNote::all();
         return view('notlar', compact('notes'));
     }
 
@@ -52,7 +52,8 @@ class NoteController extends Controller
         foreach ($request->users as $user){
             UserNote::create([
                 'note_id' => $note->id,
-                'user_id' => $user
+                'user_id' => $user,
+                'from_user_id' => Auth::id()
             ]);
         }
         session(['success' => 'Eklendi.']);

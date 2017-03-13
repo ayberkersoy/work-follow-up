@@ -98,6 +98,20 @@
                             </tr>
                             <tr>
                                 <td>
+                                    <p>
+                                        Atanacak Kişi/Kişiler
+                                    </p>
+                                </td>
+                                <td>
+                                    <select name="users[]" class="form-control" multiple>
+                                        @foreach($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->username }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <p>Not</p>
                                 </td>
                                 <td>

@@ -10,6 +10,6 @@ class NoteCategory extends Model
 
     public function note()
     {
-        return $this->belongsTo(Note::class);
+        return $this->belongsTo(Note::class, 'id', 'note_category_id');
     }
 }

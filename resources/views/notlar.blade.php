@@ -38,6 +38,9 @@
                         <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Atayan Kişi</th>
+                            <th>Atanan Kişi</th>
+                            <th>Not Kategorisi</th>
                             <th>Not İçeriği</th>
                             <th>Detay/Onayla</th>
                         </tr>
@@ -45,19 +48,25 @@
                         <tfoot>
                         <tr>
                             <th>ID</th>
+                            <th>Atayan Kişi</th>
+                            <th>Atanan Kişi</th>
+                            <th>Not Kategorisi</th>
                             <th>Not İçeriği</th>
                             <th>Detay/Onayla</th>
                         </tr>
                         </tfoot>
                         <tbody>
                         @foreach($notes as $note)
-                            @if($note->status == 0)
+                            @if($note->note->status == 0)
                                 <tr>
-                                    <td>{{ $note->id }}</td>
-                                    <td>{{ $note->content }}</td>
+                                    <td>{{ $note->note->id }}</td>
+                                    <td>{{ $note->fromUser->username }}</td>
+                                    <td>{{ $note->user->username }}</td>
+                                    <td>{{ $note->note->category->name }}</td>
+                                    <td>{{ $note->note->content }}</td>
                                     <td>
-                                        <a href="/not/{{ $note->id }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
-                                        <form action="/notlar/{{ $note->id }}" method="post">
+                                        <a href="/not/{{ $note->note->id }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                        <form action="/notlar/{{ $note->note->id }}" method="post">
                                             {{ csrf_field() }}
                                             <button class="btn btn-success" type="submit"><i class="fa fa-check"></i></button>
                                         </form>
