@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('kesif', 'DiscoveryController@show');
     Route::post('proje-kesif-ekle/{project_id}/{discovery_id}', 'DiscoveryController@storeContent');
 
+    Route::get('not-ekle', 'NoteController@create');
+    Route::post('not-ekle', 'NoteController@store');
+
 });
 
 Auth::routes();
