@@ -7,6 +7,7 @@ use App\NoteCategory;
 use App\User;
 use App\UserNote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NoteController extends Controller
 {
@@ -17,7 +18,9 @@ class NoteController extends Controller
      */
     public function index()
     {
-        //
+        $notes = Note::all();
+
+        return view('notlar', compact('notes'));
     }
 
     /**
@@ -99,5 +102,26 @@ class NoteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function teknik()
+    {
+        $notes = UserNote::where('user_id', Auth::id())
+            ->get();
+        return view('teknik', compact('notes'));
+    }
+
+    public function satinAlma()
+    {
+        $notes = UserNote::where('user_id', Auth::id())
+            ->get();
+        return view('satin-alma-not', compact('notes'));
+    }
+
+    public function muhasebe()
+    {
+        $notes = UserNote::where('user_id', Auth::id())
+            ->get();
+        return view('muhasebe-not', compact('notes'));
     }
 }

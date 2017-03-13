@@ -40,6 +40,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('not-ekle', 'NoteController@create');
     Route::post('not-ekle', 'NoteController@store');
+    Route::get('teknik', 'NoteController@teknik');
+    Route::get('satin-alma-notlar', 'NoteController@satinAlma');
+    Route::get('muhasebe', 'NoteController@muhasebe');
+    Route::get('notlar', 'NoteController@index');
 
 });
 

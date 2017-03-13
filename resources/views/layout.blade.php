@@ -158,7 +158,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="/teknik"><i class="fa fa-circle-o"></i> Teknik</a></li>
-                        <li><a href="/satin-alma"><i class="fa fa-circle-o"></i> Satın Alma</a></li>
+                        <li><a href="/satin-alma-notlar"><i class="fa fa-circle-o"></i> Satın Alma</a></li>
                         <li><a href="/muhasebe"><i class="fa fa-circle-o"></i> Muhasebe</a></li>
                         <li><a href="/not-ekle"><i class="fa fa-circle-o"></i> Not Ekle</a></li>
                         <li><a href="/notlar"><i class="fa fa-circle-o"></i> Not Düzenle/Sil</a></li>
