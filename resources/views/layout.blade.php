@@ -148,7 +148,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="/hakedis-ekle"><i class="fa fa-circle-o"></i> Hakediş Ekle</a></li>
-                        <li><a href="/hakedisler"><i class="fa fa-circle-o"></i> Hakediş Düzenle/Sil</a></li>
+                        <li><a href="/hakedisler"><i class="fa fa-circle-o"></i> Hakediş Gör</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
