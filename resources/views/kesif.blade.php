@@ -62,7 +62,7 @@
                                         <td>{{ $value->amount }}</td>
                                         <td>{{ $value->unit }}</td>
                                         <td>{{ $value->unit_price }}</td>
-                                        <td>{{ $value->amount*$value->unit_price }}</td>
+                                        <td>{{ $value->total }}</td>
                                     </tr>
                                 @endforeach
                             @endforeach

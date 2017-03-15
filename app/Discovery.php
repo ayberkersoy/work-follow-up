@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Discovery extends Model
 {
-    protected $fillable = ['dis_category_id', 'project_id', 'job', 'description', 'amount', 'unit', 'unit_price'];
+    protected $fillable = ['dis_category_id', 'project_id', 'job', 'description', 'amount', 'unit', 'unit_price', 'total'];
 
     public function category()
     {

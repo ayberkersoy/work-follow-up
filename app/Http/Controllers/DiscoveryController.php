@@ -53,13 +53,16 @@ class DiscoveryController extends Controller
 
     public function storeContent(Request $request)
     {
+        $total = floatval($request->amount)*floatval($request->unit_price);
+        //dd($total);
         $content = DiscoveryContent::create([
             'discovery_id' => $request->discovery_id,
             'job' => $request->job,
             'description' => $request->description,
             'amount' => $request->amount,
             'unit' => $request->unit,
-            'unit_price' => $request->unit_price
+            'unit_price' => $request->unit_price,
+            'total' => floatval($total)
         ]);
         $note = Note::create([
             'discovery_id' => $content->id,
