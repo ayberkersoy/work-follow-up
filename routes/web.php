@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('kesifler', 'DiscoveryController@index');
     Route::get('proje-kesif-ekle/{project_id}/{discovery_id}', 'DiscoveryController@addContent');
     Route::post('kesif-ekle', 'DiscoveryController@storeDiscovery');
-    Route::post('kesif', 'DiscoveryController@show');
+    Route::get('kesif', 'DiscoveryController@show');
     Route::post('proje-kesif-ekle/{project_id}/{discovery_id}', 'DiscoveryController@storeContent');
 
     Route::get('not-ekle', 'NoteController@create');
@@ -53,7 +53,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('hakedis-ekle', 'DiscoveryController@progressStore');
     Route::post('proje-hakedis-ekle/{project_id}/{discovery_id}', 'DiscoveryController@progressContentStore');
-    Route::post('hakedis', 'DiscoveryController@showProgress');
+    Route::get('hakedis', 'DiscoveryController@showProgress');
+
+    Route::delete('hakedis/{id}/{project_id}', 'DiscoveryController@destroyProgress');
 });
 
 Auth::routes();

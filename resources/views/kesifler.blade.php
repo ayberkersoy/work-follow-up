@@ -27,8 +27,11 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <form action="/kesif" method="post">
-                        {{ csrf_field() }}
+                    @if (session()->exists('error'))
+                        <div class="alert alert-error"> {{ session()->get('error') }}</div>
+                        {{ session()->forget('error') }}
+                    @endif
+                    <form action="/kesif" method="get">
                         <div class="form-group">
                             <label for="category">Proje:</label>
                             <select name="project_id" class="form-control select2" id="category" onchange="this.form.submit()">

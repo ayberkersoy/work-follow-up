@@ -39,6 +39,7 @@
                             <th>Toplam Tutar</th>
                             <th>Maliyet</th>
                             <th>Fark</th>
+                            <th>Düzenle/Sil</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -49,7 +50,7 @@
                             @endphp
                             <tr style="background-color: #8a6d3b; color: #fff">
                                 <td><b>{{ $loop->iteration }}</b></td>
-                                <td colspan="7"><b>{{ $item->category->name }}</b></td>
+                                <td colspan="8"><b>{{ $item->category->name }}</b></td>
                                 <td><a href="/proje-hakedis-ekle/{{ $discovery[0]->project->id }}/{{ $item->id }}" class="btn btn-success"><i class="fa fa-plus"></i></a></td>
                             </tr>
                             @if(!$loop->first)
@@ -68,6 +69,14 @@
                                     <td>{{ $value->total }}</td>
                                     <td>{{ $value->amount*$value->last_unit_price }}</td>
                                     <td>{{ $value->amount*$value->last_unit_price-$value->total }}</td>
+                                    <td>
+                                        <form action="/hakedis/{{ $value->id }}/{{ $discovery[0]->project->id }}" method="post">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <a href="/hakedis-duzenle/{{ $discovery[0]->project->id }}/{{ $item->id }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                            <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         @endforeach

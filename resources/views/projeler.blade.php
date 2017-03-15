@@ -61,10 +61,11 @@
                                 <td>{{ $project->firm_name }}</td>
                                 <td>{{ $project->authorized }}</td>
                                 <td>
-                                    <a href="/proje-detay/{{ $project->id }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+
                                     <form action="/projeler/{{ $project->id }}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
+                                        <a href="/proje-detay/{{ $project->id }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                         <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o"></i></button>
                                     </form>
                                 </td>

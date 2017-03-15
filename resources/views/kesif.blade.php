@@ -27,12 +27,7 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <script type="text/javascript">
-                        $(document).ready(function() {
-                            $('#yoneticilerer').DataTable();
-                        });
-                    </script>
-                    <table class="table table-bordered table-hover" id="yoneticilerer">
+                    <table class="table table-bordered table-hover" >
                         <thead>
                             <tr style="background-color: #005927; color: #fff">
                                 <th>POZ</th>

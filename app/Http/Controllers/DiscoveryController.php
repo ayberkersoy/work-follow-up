@@ -146,12 +146,27 @@ class DiscoveryController extends Controller
     public function show(Request $request)
     {
         $discovery = Discovery::where('project_id', $request->project_id)->where('progress', 0)->get();
-        return view('kesif', compact('discovery'));
+        if($discovery->count()){
+            return view('kesif', compact('discovery'));
+        }
+        session(['error' => 'Keşif Bulunamadı.']);
+        return back();
     }
 
     public function showProgress(Request $request)
     {
         $discovery = Discovery::where('project_id', $request->project_id)->get();
-        return view('hakedis', compact('discovery'));
+        if($discovery->count()){
+            return view('hakedis', compact('discovery'));
+        }
+        session(['error' => 'Hakediş Bulunamadı.']);
+        return back();
+    }
+
+    public function destroyProgress($id, $project_id)
+    {
+        DiscoveryContent::find($id)->delete();
+        $discovery = Discovery::where('project_id', $project_id)->get();
+        return back()->withInput();
     }
 }
