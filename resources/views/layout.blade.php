@@ -147,7 +147,7 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/hakedif-ekle"><i class="fa fa-circle-o"></i> Hakediş Ekle</a></li>
+                        <li><a href="/hakedis-ekle"><i class="fa fa-circle-o"></i> Hakediş Ekle</a></li>
                         <li><a href="/hakedisler"><i class="fa fa-circle-o"></i> Hakediş Düzenle/Sil</a></li>
                     </ul>
                 </li>

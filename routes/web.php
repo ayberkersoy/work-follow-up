@@ -46,6 +46,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('notlar', 'NoteController@index');
     Route::post('notlar/{id}', 'NoteController@success');
     Route::get('not/{id}', 'NoteController@show');
+
+    Route::get('hakedis-ekle', 'DiscoveryController@progressAdd');
+    Route::get('proje-hakedis-ekle/{project_id}/{discovery_id}', 'DiscoveryController@progressContent');
+
+    Route::post('hakedis-ekle', 'DiscoveryController@progressStore');
+    Route::post('proje-hakedis-ekle/{project_id}/{discovery_id}', 'DiscoveryController@progressContentStore');
 });
 
 Auth::routes();
