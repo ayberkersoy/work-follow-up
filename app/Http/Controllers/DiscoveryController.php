@@ -64,18 +64,20 @@ class DiscoveryController extends Controller
             'unit_price' => $request->unit_price,
             'total' => floatval($total)
         ]);
-        $note = Note::create([
-            'discovery_id' => $content->id,
-            'note_category_id' => $request->note_category_id,
-            'content' => $request->body,
-            'status' => 0
-        ]);
-        foreach ($request->users as $user){
-            UserNote::create([
-                'note_id' => $note->id,
-                'user_id' => $user,
-                'from_user_id' => Auth::id()
+        if(!$request->body == NULL){
+            $note = Note::create([
+                'discovery_id' => $content->id,
+                'note_category_id' => $request->note_category_id,
+                'content' => $request->body,
+                'status' => 0
             ]);
+            foreach ($request->users as $user){
+                UserNote::create([
+                    'note_id' => $note->id,
+                    'user_id' => $user,
+                    'from_user_id' => Auth::id()
+                ]);
+            }
         }
         session(['success' => 'Eklendi.']);
         return back();
