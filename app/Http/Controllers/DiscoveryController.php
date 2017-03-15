@@ -52,6 +52,13 @@ class DiscoveryController extends Controller
         return view('kesifler', compact('projects'));
     }
 
+    public function indexProgress()
+    {
+        $projects = Project::all();
+
+        return view('hakedisler', compact('projects'));
+    }
+
     public function storeDiscovery(Request $request)
     {
         $discovery = Discovery::create([
@@ -138,7 +145,13 @@ class DiscoveryController extends Controller
 
     public function show(Request $request)
     {
-        $discovery = Discovery::where('project_id', $request->project_id)->get();
+        $discovery = Discovery::where('project_id', $request->project_id)->where('progress', 0)->get();
         return view('kesif', compact('discovery'));
+    }
+
+    public function showProgress(Request $request)
+    {
+        $discovery = Discovery::where('project_id', $request->project_id)->get();
+        return view('hakedis', compact('discovery'));
     }
 }

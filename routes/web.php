@@ -49,9 +49,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('hakedis-ekle', 'DiscoveryController@progressAdd');
     Route::get('proje-hakedis-ekle/{project_id}/{discovery_id}', 'DiscoveryController@progressContent');
+    Route::get('hakedisler', 'DiscoveryController@indexProgress');
 
     Route::post('hakedis-ekle', 'DiscoveryController@progressStore');
     Route::post('proje-hakedis-ekle/{project_id}/{discovery_id}', 'DiscoveryController@progressContentStore');
+    Route::post('hakedis', 'DiscoveryController@showProgress');
 });
 
 Auth::routes();

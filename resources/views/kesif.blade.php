@@ -27,7 +27,12 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <table class="table table-bordered table-hover">
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            $('#yoneticilerer').DataTable();
+                        });
+                    </script>
+                    <table class="table table-bordered table-hover" id="yoneticilerer">
                         <thead>
                             <tr style="background-color: #005927; color: #fff">
                                 <th>POZ</th>
@@ -47,7 +52,8 @@
                                 @endphp
                                 <tr style="background-color: #8a6d3b; color: #fff">
                                     <td><b>{{ $loop->iteration }}</b></td>
-                                    <td colspan="6"><b>{{ $item->category->name }}</b></td>
+                                    <td colspan="5"><b>{{ $item->category->name }}</b></td>
+                                    <td><a href="/proje-kesif-ekle/{{ $discovery[0]->project->id }}/{{ $item->id }}" class="btn btn-success"><i class="fa fa-plus"></i></a></td>
                                 </tr>
                                 @if(!$loop->first)
                                     @php
