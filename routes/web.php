@@ -59,6 +59,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('hakedis-duzenle/{id}', 'DiscoveryController@edit');
     Route::post('hakedis-duzenle/{id}', 'DiscoveryController@update');
+
+    Route::get('kullanici-ekle', function () {
+        return view('kullanici-ekle');
+    });
+    Route::post('kullanici-ekle', 'UserController@store');
 });
 
 Auth::routes();
