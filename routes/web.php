@@ -1,9 +1,7 @@
 <?php
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', function () {
-        return view('index');
-    });
+    Route::get('/', 'HomeController@index');
 
     Route::get('cikis', function (){
         Auth::logout();
