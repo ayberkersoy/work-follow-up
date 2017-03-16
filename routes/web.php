@@ -71,6 +71,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('kullanici-detay/{id}', 'UserController@update');
 
     Route::get('hakedis-excel/{id}', 'DiscoveryController@excel');
+
+    Route::get('tum-notlar', 'NoteController@unSuccess');
+    Route::post('tum-notlar/{id}', 'NoteController@unCheck');
 });
 
 Auth::routes();

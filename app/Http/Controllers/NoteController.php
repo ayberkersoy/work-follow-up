@@ -134,4 +134,19 @@ class NoteController extends Controller
         $note->save();
         return back();
     }
+
+    public function unSuccess()
+    {
+        $notes = UserNote::all();
+        return view('tumnotlar', compact('notes'));
+    }
+
+    public function unCheck($id)
+    {
+        $note = Note::find($id);
+        $note->status = 0;
+        $note->save();
+        //dd($note);
+        return back();
+    }
 }
