@@ -69,6 +69,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('kullanicilar/{id}', 'UserController@destroy');
     Route::get('kullanici-detay/{id}', 'UserController@show');
     Route::post('kullanici-detay/{id}', 'UserController@update');
+
+    Route::get('excel', 'DiscoveryController@excel');
 });
 
 Auth::routes();

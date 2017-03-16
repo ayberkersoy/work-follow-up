@@ -12,6 +12,8 @@ use App\User;
 use App\UserNote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\View;
 
 class DiscoveryController extends Controller
 {
@@ -189,5 +191,19 @@ class DiscoveryController extends Controller
 
         session(['success' => 'Düzenlendi.']);
         return back();
+    }
+
+    public function excel()
+    {
+        $discovery = Discovery::where('project_id', 1)->get();
+        Excel::create($discovery[0]->project->project_name, function($excel) use ($discovery) {
+
+            $excel->sheet('New sheet', function($sheet) use ($discovery) {
+
+                $sheet->loadView('excel', array('discovery' => $discovery));
+
+            });
+
+        })->download('xlsx');
     }
 }
