@@ -73,7 +73,7 @@
                                         <form action="/hakedis/{{ $value->id }}/{{ $discovery[0]->project->id }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <a href="/hakedis-duzenle/{{ $discovery[0]->project->id }}/{{ $item->id }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                            <a href="/hakedis-duzenle/{{ $value->id }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                             <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o"></i></button>
                                         </form>
                                     </td>

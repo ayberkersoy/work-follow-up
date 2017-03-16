@@ -56,6 +56,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('hakedis', 'DiscoveryController@showProgress');
 
     Route::delete('hakedis/{id}/{project_id}', 'DiscoveryController@destroyProgress');
+
+    Route::get('hakedis-duzenle/{id}', 'DiscoveryController@edit');
+    Route::post('hakedis-duzenle/{id}', 'DiscoveryController@update');
 });
 
 Auth::routes();

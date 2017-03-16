@@ -169,4 +169,25 @@ class DiscoveryController extends Controller
         $discovery = Discovery::where('project_id', $project_id)->get();
         return back()->withInput();
     }
+
+    public function edit($id)
+    {
+        $discovery = DiscoveryContent::find($id);
+        return view('hakedis-duzenle', compact('discovery'));
+    }
+
+    public function update(Request $request)
+    {
+        $discovery = DiscoveryContent::find($request->id);
+        $discovery->job = $request->job;
+        $discovery->description = $request->description;
+        $discovery->amount = $request->amount;
+        $discovery->unit = $request->unit;
+        $discovery->unit_price = $request->unit_price;
+        $discovery->last_unit_price = $request->last_unit_price;
+        $discovery->save();
+
+        session(['success' => 'Düzenlendi.']);
+        return back();
+    }
 }
