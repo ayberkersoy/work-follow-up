@@ -67,6 +67,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('kullanicilar', 'UserController@index');
     Route::delete('kullanicilar/{id}', 'UserController@destroy');
+    Route::get('kullanici-detay/{id}', 'UserController@show');
+    Route::post('kullanici-detay/{id}', 'UserController@update');
 });
 
 Auth::routes();

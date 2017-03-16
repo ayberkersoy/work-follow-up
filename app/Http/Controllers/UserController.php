@@ -73,7 +73,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('kullanici-detay', compact('user'));
     }
 
     /**
@@ -84,7 +85,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -94,9 +95,40 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user = User::find($request->id);
+        $this->validate($request,[
+            'name' => 'required',
+            'surname' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+        ],[
+            'name.required' => 'Adı alanı gereklidir.',
+            'surname.required' => 'Soyadı alanı gereklidir.',
+            'username.required' => 'Kullanıcı Adı alanı gereklidir.',
+            'email.required' => 'E-mail alanı gereklidir.'
+        ]);
+
+        if($request->password == NULL){
+            $user->name = $request->name;
+            $user->surname = $request->surname;
+            $user->username = $request->username;
+            $user->phone = $request->phone;
+            $user->email = $request->email;
+            $user->save();
+        }else {
+            $user->name = $request->name;
+            $user->surname = $request->surname;
+            $user->username = $request->username;
+            $user->phone = $request->phone;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->save();
+        }
+
+        session(['success' => 'Düzenlendi.']);
+        return back();
     }
 
     /**
