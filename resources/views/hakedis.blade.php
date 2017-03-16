@@ -27,6 +27,7 @@
                     </div>
                 </div>
                 <div class="box-body">
+                    <a href="/hakedis-excel/{{ $discovery[0]->project->id }}" class="btn btn-success">Excel</a>
                     <table class="table table-bordered table-hover">
                         <thead>
                         <tr style="background-color: #005927; color: #fff">

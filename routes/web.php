@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('kullanici-detay/{id}', 'UserController@show');
     Route::post('kullanici-detay/{id}', 'UserController@update');
 
-    Route::get('excel', 'DiscoveryController@excel');
+    Route::get('hakedis-excel/{id}', 'DiscoveryController@excel');
 });
 
 Auth::routes();

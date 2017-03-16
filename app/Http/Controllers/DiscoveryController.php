@@ -193,9 +193,9 @@ class DiscoveryController extends Controller
         return back();
     }
 
-    public function excel()
+    public function excel(Request $request)
     {
-        $discovery = Discovery::where('project_id', 1)->get();
+        $discovery = Discovery::where('project_id', $request->id)->get();
         Excel::create($discovery[0]->project->project_name, function($excel) use ($discovery) {
 
             $excel->sheet('New sheet', function($sheet) use ($discovery) {
