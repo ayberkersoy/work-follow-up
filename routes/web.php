@@ -64,6 +64,9 @@ Route::group(['middleware' => 'auth'], function () {
         return view('kullanici-ekle');
     });
     Route::post('kullanici-ekle', 'UserController@store');
+
+    Route::get('kullanicilar', 'UserController@index');
+    Route::delete('kullanicilar/{id}', 'UserController@destroy');
 });
 
 Auth::routes();
