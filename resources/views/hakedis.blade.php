@@ -30,7 +30,7 @@
                     <a href="/hakedis-excel/{{ $discovery[0]->project->id }}" class="btn btn-success">Excel</a>
                     <table class="table table-bordered table-hover">
                         <thead>
-                        <tr style="background-color: #005927; color: #fff">
+                        <tr style="background-color: #005927; color: #fff; height:20px !important;">
                             <th>POZ</th>
                             <th>İşin Adı</th>
                             <th>Açıklama</th>
@@ -48,11 +48,12 @@
                             @php
                                 $x = 1;
                                 $y = 1;
+                                $z = 1;
                             @endphp
-                            <tr style="background-color: #8a6d3b; color: #fff">
+                            <tr style="background-color: #8a6d3b; color: #fff; height:20px !important;">
                                 <td><b>{{ $loop->iteration }}</b></td>
                                 <td colspan="8"><b>{{ $item->category->name }}</b></td>
-                                <td><a href="/proje-hakedis-ekle/{{ $discovery[0]->project->id }}/{{ $item->id }}" class="btn btn-success"><i class="fa fa-plus"></i></a></td>
+                                <td><a href="/proje-hakedis-ekle/{{ $discovery[0]->project->id }}/{{ $item->id }}" style="color:#fff;"><i class="fa fa-plus"></i></a></td>
                             </tr>
                             @if(!$loop->first)
                                 @php
@@ -60,8 +61,11 @@
                                 @endphp
                             @endif
                             @foreach($discovery[$loop->index]->content as $value)
-                                <tr>
-                                    <td>{{ $x }} - {{ $y++ }}</td>
+                                @php
+                                    $y++;
+                                @endphp
+                                <tr style="height:20px !important;">
+                                    <td>{{ $x }} - {{ $loop->iteration }}</td>
                                     <td>{{ $value->job }}</td>
                                     <td>{{ $value->description }}</td>
                                     <td>{{ $value->amount }}</td>
@@ -74,11 +78,71 @@
                                         <form action="/hakedis/{{ $value->id }}/{{ $discovery[0]->project->id }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <a href="/hakedis-duzenle/{{ $value->id }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                            <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o"></i></button>
+                                            <a href="#" id="{{ $value->id }}" style="color:#000;"><i class="fa fa-plus"></i></a> &nbsp;
+                                            <a href="/hakedis-duzenle/{{ $value->id }}" style="color:#000;"><i class="fa fa-edit"></i></a> &nbsp;
+                                            <button type="submit"><i class="fa fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>
+                                @foreach($value->progress as $progres)
+                                    @if(!$loop->first)
+                                        @php
+                                            $z = $y;
+                                        @endphp
+                                    @endif
+                                    <tr style="background-color: #f0f0f0;">
+                                        <form action="/hakedis-alt/{{ $progres->id }}/edit" method="post">
+                                            {{ csrf_field() }}
+                                            <td>{{ $x }} - {{ $z }} - {{ $loop->iteration }}</td>
+                                            <td><input type="text" value="{{ $progres->job }}" placeholder="İşin Adı" name="job"></td>
+                                            <td><input type="text" value="{{ $progres->description }}" placeholder="Açıklama" name="description"></td>
+                                            <td><input type="text" value="{{ $progres->amount }}" placeholder="Miktar" name="amount"></td>
+                                            <td><input type="text" value="{{ $progres->unit }}" placeholder="Birim" name="unit"></td>
+                                            <td><input type="text" value="{{ $progres->unit_price }}" placeholder="Birim Fiyat" name="unit_price"></td>
+                                            <td>{{ $progres->total }}</td>
+                                            <td>@if($progres->note_id != 0) <a href=""><i class="fa fa-comment"></i></a> @else
+                                                    <a href=""><i class="fa fa-plus"></i></a> @endif</td>
+                                            <td>
+                                                @if($progres->unit_price != NULL or $progres->note->status == 1) <a href=""><i class="fa fa-check"></i></a> @endif
+                                            </td>
+                                            <td>
+                                                <button type="submit"><i class="fa fa-edit"></i></button>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                @endforeach
+                                <script type="text/javascript">
+                                    $(document).ready(function(){
+
+                                        $("#{{ $value->id }}").click(function() {
+                                            $("#form{{ $value->id }}").show();
+                                        });
+                                    });
+                                </script>
+                                    <tr style="display: none; !important;" id="form{{ $value->id }}">
+                                        <form action="/hakedis-alt/{{ $value->id }}" method="post">
+                                            {{ csrf_field() }}
+                                            <td></td>
+                                            <td>
+                                                <input type="text" name="job" placeholder="İşin Adı" class="form-control">
+                                            </td>
+                                            <td>
+                                                <input type="text" name="description" placeholder="Açıklama" class="form-control">
+                                            </td>
+                                            <td>
+                                                <input type="text" name="amount" placeholder="Miktar" class="form-control">
+                                            </td>
+                                            <td>
+                                                <input type="text" name="unit" placeholder="Birim" class="form-control">
+                                            </td>
+                                            <td>
+                                                <input type="text" name="unit_price" placeholder="Birim Fiyat" class="form-control">
+                                            </td>
+                                            <td>
+                                                <button type="submit"><i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </form>
+                                    </tr>
                             @endforeach
                         @endforeach
                         </tbody>
@@ -91,5 +155,4 @@
 
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
-
 @endsection

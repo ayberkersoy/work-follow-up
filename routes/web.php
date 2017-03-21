@@ -72,6 +72,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('tum-notlar', 'NoteController@unSuccess');
     Route::post('tum-notlar/{id}', 'NoteController@unCheck');
+
+    Route::post('hakedis-alt/{id}', 'ProgressController@store');
+    Route::post('hakedis-alt/{id}/edit', 'ProgressController@update');
 });
 
 Auth::routes();

@@ -12,4 +12,9 @@ class DiscoveryContent extends Model
     {
         return $this->belongsTo(Discovery::class);
     }
+
+    public function progress()
+    {
+        return $this->hasMany(Progress::class);
+    }
 }
