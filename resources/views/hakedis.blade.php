@@ -53,7 +53,8 @@
                             <tr style="background-color: #8a6d3b; color: #fff; height:20px !important;">
                                 <td><b>{{ $loop->iteration }}</b></td>
                                 <td colspan="8"><b>{{ $item->category->name }}</b></td>
-                                <td><a href="/proje-hakedis-ekle/{{ $discovery[0]->project->id }}/{{ $item->id }}" style="color:#fff;"><i class="fa fa-plus"></i></a></td>
+                                <td><a style="color:#fff;" id="{{ $item->id }}"><i class="fa fa-plus"></i></a></td>
+                                <!--<td><a href="/proje-hakedis-ekle/{{ $discovery[0]->project->id }}/{{ $item->id }}" style="color:#fff;"><i class="fa fa-plus"></i></a></td>-->
                             </tr>
                             @if(!$loop->first)
                                 @php
@@ -78,7 +79,7 @@
                                         <form action="/hakedis/{{ $value->id }}/{{ $discovery[0]->project->id }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <a href="#" id="{{ $value->id }}" style="color:#000;"><i class="fa fa-plus"></i></a> &nbsp;
+                                            <a id="{{ $value->id }}" style="color:#000;"><i class="fa fa-plus"></i></a> &nbsp;
                                             <a href="/hakedis-duzenle/{{ $value->id }}" style="color:#000;"><i class="fa fa-edit"></i></a> &nbsp;
                                             <button type="submit"><i class="fa fa-trash"></i></button>
                                         </form>
@@ -100,11 +101,12 @@
                                             <td><input type="text" value="{{ $progres->unit }}" placeholder="Birim" name="unit"></td>
                                             <td><input type="text" value="{{ $progres->unit_price }}" placeholder="Birim Fiyat" name="unit_price"></td>
                                             <td>{{ $progres->total }}</td>
-                                            <td>@if($progres->note_id != 0) <a href=""><i class="fa fa-comment"></i></a> @else
-                                                    <a href=""><i class="fa fa-plus"></i></a> @endif</td>
                                             <td>
-                                                @if($progres->unit_price != NULL or $progres->note->status == 1) <a href=""><i class="fa fa-check"></i></a> @endif
+                                                <a href="/hakedis-notlar/{{ $progres->id }}"><i class="fa fa-comment"></i> {{ $progres->note->count() }}</a>
                                             </td>
+                                            <td>
+                                                @if($progres->unit_price != NULL) <a href=""><i class="fa fa-check"></i></a> @endif
+                                            </td><!--  or $progres->note->status == 1 -->
                                             <td>
                                                 <button type="submit"><i class="fa fa-edit"></i></button>
                                             </td>
@@ -116,6 +118,9 @@
 
                                         $("#{{ $value->id }}").click(function() {
                                             $("#form{{ $value->id }}").show();
+                                        });
+                                        $("#{{ $item->id }}").click(function() {
+                                            $("#form{{ $item->id }}").show();
                                         });
                                     });
                                 </script>
@@ -143,7 +148,32 @@
                                             </td>
                                         </form>
                                     </tr>
+
                             @endforeach
+                            <tr style="display: none; !important;" id="form{{ $item->id }}">
+                                <form action="proje-hakedis-ekle/{{ $discovery[0]->project->id }}/{{ $item->id }}" method="post">
+                                    {{ csrf_field() }}
+                                    <td></td>
+                                    <td>
+                                        <input type="text" name="job" placeholder="İşin Adı" class="form-control">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="description" placeholder="Açıklama" class="form-control">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="amount" placeholder="Miktar" class="form-control">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="unit" placeholder="Birim" class="form-control">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="unit_price" placeholder="Birim Fiyat" class="form-control">
+                                    </td>
+                                    <td>
+                                        <button type="submit"><i class="fa fa-plus"></i></button>
+                                    </td>
+                                </form>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>

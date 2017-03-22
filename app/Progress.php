@@ -15,6 +15,6 @@ class Progress extends Model
 
     public function note()
     {
-        return $this->hasMany(ProgressNote::class);
+        return $this->hasMany(ProgressNote::class, 'discovery_content_id');
     }
 }

@@ -141,7 +141,6 @@ class DiscoveryController extends Controller
                 ]);
             }
         }
-        session(['success' => 'Eklendi.']);
         return back();
     }
 
