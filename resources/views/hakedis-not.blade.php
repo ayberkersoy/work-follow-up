@@ -81,7 +81,7 @@
                                                 {{ method_field('PATCH') }}
                                                 {{ csrf_field() }}
                                                 <input type="hidden" value="{{ $note->id }}" name="note">
-                                                <button class="btn btn-success" type="submit">Tamamlandı</button>
+                                                <button class="btn btn-success" type="submit">Tamamla</button>
                                             </form>
                                         @endif
 
