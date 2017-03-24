@@ -80,6 +80,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('hakedis-notlar/{id}', 'ProgressController@storeNote');
 
     Route::patch('hakedis-notlar/{id}', 'ProgressController@done');
+
+    Route::post('hakedis-alt/{id}/success', 'ProgressController@success');
 });
 
 Auth::routes();

@@ -79,4 +79,12 @@ class ProgressController extends Controller
         $note->save();
         return back();
     }
+
+    public function success(Request $request)
+    {
+        $progress = Progress::find($request->id);
+        $progress->status = 1;
+        $progress->save();
+        return back();
+    }
 }

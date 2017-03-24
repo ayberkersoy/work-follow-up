@@ -40,7 +40,7 @@
                             <th>Toplam Tutar</th>
                             <th>Maliyet</th>
                             <th>Fark</th>
-                            <th>Düzenle/Sil</th>
+                            <th>İşlem</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -73,8 +73,13 @@
                                     <td>{{ $value->unit }}</td>
                                     <td>{{ $value->unit_price }}</td>
                                     <td>{{ $value->total }}</td>
-                                    <td>{{ $value->amount*$value->last_unit_price }}</td>
-                                    <td>{{ $value->amount*$value->last_unit_price-$value->total }}</td>
+                                    @if($value->progress->count())
+                                        <td>{{ $value->progress->sum('total') }}</td>
+                                        <td>{{ $value->total-$value->progress->sum('total') }}</td>
+                                    @else
+                                        <td>0</td>
+                                        <td>0</td>
+                                    @endif
                                     <td>
                                         <form action="/hakedis/{{ $value->id }}/{{ $discovery[0]->project->id }}" method="post">
                                             {{ csrf_field() }}
@@ -99,18 +104,29 @@
                                             <td><input type="text" value="{{ $progres->description }}" placeholder="Açıklama" name="description"></td>
                                             <td><input type="text" value="{{ $progres->amount }}" placeholder="Miktar" name="amount"></td>
                                             <td><input type="text" value="{{ $progres->unit }}" placeholder="Birim" name="unit"></td>
-                                            <td><input type="text" value="{{ $progres->unit_price }}" placeholder="Birim Fiyat" name="unit_price"></td>
+                                            @if($progres->unit_price == NULL)
+                                                <td><input type="text" value="{{ $progres->unit_price }}" placeholder="Birim Fiyat" name="unit_price" style="background-color: #981500; color:#fff;"></td>
+                                            @else
+                                                <td><input type="text" value="{{ $progres->unit_price }}" placeholder="Birim Fiyat" name="unit_price"></td>
+                                            @endif
                                             <td>{{ $progres->total }}</td>
                                             <td>
                                                 <a href="/hakedis-notlar/{{ $progres->id }}"><i class="fa fa-comment"></i> {{ $progres->note->count() }}</a>
                                             </td>
                                             <td>
-                                                @if($progres->unit_price != NULL) <a href=""><i class="fa fa-check"></i></a> @endif
-                                            </td><!--  or $progres->note->status == 1 -->
-                                            <td>
                                                 <button type="submit"><i class="fa fa-edit"></i></button>
                                             </td>
                                         </form>
+                                            <td>
+                                                @if($progres->unit_price != NULL AND $progres->status == 0)
+                                                    <form action="/hakedis-alt/{{ $progres->id }}/success" method="post">
+                                                        {{ csrf_field() }}
+                                                        <button><i class="fa fa-check"></i></button>
+                                                    </form>
+                                                @elseif($progres->status == 1)
+                                                    <i class="fa fa-check"></i>
+                                                @endif
+                                            </td>
                                     </tr>
                                 @endforeach
                                 <script type="text/javascript">
