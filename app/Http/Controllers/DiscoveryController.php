@@ -68,7 +68,7 @@ class DiscoveryController extends Controller
             'project_id' => $request->project_id,
             'progress' => 0
         ]);
-        return redirect('proje-kesif-ekle/'.$request->project_id.'/'.$discovery->id);
+        return redirect('/kesif?project_id='.$request->project_id);
     }
 
     public function progressStore(Request $request)
@@ -78,7 +78,7 @@ class DiscoveryController extends Controller
             'project_id' => $request->project_id,
             'progress' => 1
         ]);
-        return redirect('proje-hakedis-ekle/'.$request->project_id.'/'.$discovery->id);
+        return redirect('/hakedis?project_id='.$request->project_id);
     }
 
     public function storeContent(Request $request)

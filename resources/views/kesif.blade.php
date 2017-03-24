@@ -48,7 +48,7 @@
                                 <tr style="background-color: #8a6d3b; color: #fff">
                                     <td><b>{{ $loop->iteration }}</b></td>
                                     <td colspan="5"><b>{{ $item->category->name }}</b></td>
-                                    <td><a href="/proje-kesif-ekle/{{ $discovery[0]->project->id }}/{{ $item->id }}" class="btn btn-success"><i class="fa fa-plus"></i></a></td>
+                                    <td><a id="{{ $item->id }}" class="btn btn-success"><i class="fa fa-plus"></i></a></td>
                                 </tr>
                                 @if(!$loop->first)
                                     @php
@@ -66,6 +66,37 @@
                                         <td>{{ $value->total }}</td>
                                     </tr>
                                 @endforeach
+                                <script type="text/javascript">
+                                    $(document).ready(function(){
+                                        $("#{{ $item->id }}").click(function() {
+                                            $("#form{{ $item->id }}").show();
+                                        });
+                                    });
+                                </script>
+                                <tr style="display: none; !important;" id="form{{ $item->id }}">
+                                    <form action="/proje-kesif-ekle/{{ $discovery[0]->project->id }}/{{ $item->id }}" method="post">
+                                        {{ csrf_field() }}
+                                        <td></td>
+                                        <td>
+                                            <input type="text" name="job" placeholder="İşin Adı" class="form-control">
+                                        </td>
+                                        <td>
+                                            <input type="text" name="description" placeholder="Açıklama" class="form-control">
+                                        </td>
+                                        <td>
+                                            <input type="text" name="amount" placeholder="Miktar" class="form-control">
+                                        </td>
+                                        <td>
+                                            <input type="text" name="unit" placeholder="Birim" class="form-control">
+                                        </td>
+                                        <td>
+                                            <input type="text" name="unit_price" placeholder="Birim Fiyat" class="form-control">
+                                        </td>
+                                        <td>
+                                            <button type="submit"><i class="fa fa-plus"></i></button>
+                                        </td>
+                                    </form>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
