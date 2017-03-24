@@ -95,14 +95,22 @@
                                         <td>Birim Fiyat</td>
                                         <td>Toplam Tutar</td>
                                     </tr>
-                                    <tr>
-                                        <td>{{ $note->note->job }}</td>
-                                        <td>{{ $note->note->description }}</td>
-                                        <td>{{ $note->note->amount }}</td>
-                                        <td>{{ $note->note->unit }}</td>
-                                        <td>{{ $note->note->unit_price }}</td>
-                                        <td>{{ $note->note->total }}</td>
-                                    </tr>
+                                    <form action="/hakedis-alt/{{ $note->note->id }}/edit" method="post">
+                                        <tr>
+                                            {{ csrf_field() }}
+                                            <td><input type="text" name="job" value="{{ $note->note->job }}"></td>
+                                            <td><input type="text" name="description" value="{{ $note->note->description }}"></td>
+                                            <td><input type="text" name="amount" value="{{ $note->note->amount }}"></td>
+                                            <td><input type="text" name="unit" value="{{ $note->note->unit }}"></td>
+                                            <td><input type="text" name="unit_price" value="{{ $note->note->unit_price }}"></td>
+                                            <td>{{ $note->note->total }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button class="btn btn-primary" type="submit"><i class="fa fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                    </form>
                                 </table>
                             </td>
                         </tr>
