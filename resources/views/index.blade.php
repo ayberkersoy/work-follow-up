@@ -69,6 +69,9 @@
                     <!-- Left col -->
                     <section class="col-lg-12 connectedSortable" style="background-color: #fff">
                         <div class="col-sm-12">
+                            @if(Auth()->user()->index == 1)
+
+                            @endif
                             <h4>Son Projeler</h4>
                             <table class="table table-hover table-bordered table-striped">
                                 <tr>
