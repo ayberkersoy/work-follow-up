@@ -53,13 +53,13 @@
                         </tfoot>
                         <tbody>
                         @foreach($notes as $note)
-                            @if($note->note->status == 0 && $note->note->note_category_id == 1)
+                            @if($note->status == 0 && $note->note_category_id == 1)
                                 <tr>
-                                    <td>{{ $note->note->id }}</td>
+                                    <td>{{ $note->id }}</td>
                                     <td>{{ $note->user->username }}</td>
-                                    <td>{{ substr($note->note->content, 0, 100) }}</td>
+                                    <td>{{ substr($note->content, 0, 100) }}</td>
                                     <td>
-                                        <form action="/notlar/{{ $note->note->id }}" method="post">
+                                        <form action="/notlar/{{ $note->id }}" method="post">
                                             {{ csrf_field() }}
                                             <a href="/not/{{ $note->id }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                             <button class="btn btn-success" type="submit"><i class="fa fa-check"></i></button>

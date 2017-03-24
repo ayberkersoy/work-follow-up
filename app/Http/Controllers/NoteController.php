@@ -109,28 +109,28 @@ class NoteController extends Controller
 
     public function teknik()
     {
-        $notes = UserNote::where('user_id', Auth::id())
+        $notes = ProgressNote::where('to_user_id', Auth::id())
             ->get();
         return view('teknik', compact('notes'));
     }
 
     public function satinAlma()
     {
-        $notes = UserNote::where('user_id', Auth::id())
+        $notes = ProgressNote::where('to_user_id', Auth::id())
             ->get();
         return view('satin-alma-not', compact('notes'));
     }
 
     public function muhasebe()
     {
-        $notes = UserNote::where('user_id', Auth::id())
+        $notes = ProgressNote::where('to_user_id', Auth::id())
             ->get();
         return view('muhasebe-not', compact('notes'));
     }
 
     public function success($id)
     {
-        $note = Note::find($id);
+        $note = ProgressNote::find($id);
         $note->status = 1;
         $note->save();
         return back();
@@ -138,13 +138,13 @@ class NoteController extends Controller
 
     public function unSuccess()
     {
-        $notes = UserNote::all();
+        $notes = ProgressNote::all();
         return view('tumnotlar', compact('notes'));
     }
 
     public function unCheck($id)
     {
-        $note = Note::find($id);
+        $note = ProgressNote::find($id);
         $note->status = 0;
         $note->save();
         //dd($note);
