@@ -80,12 +80,12 @@
                                         <th>Görüntüle</th>
                                     </tr>
                                     @foreach($notes as $note)
-                                        @if($note->note->status == 0)
+                                        @if($note->status == 0)
                                             <tr>
-                                                <td>{{ $note->fromUser->username }}</td>
                                                 <td>{{ $note->user->username }}</td>
-                                                <td>{{ $note->note->category->name }}</td>
-                                                <td>{{ substr($note->note->content, 0, 100) }}</td>
+                                                <td>{{ $note->to_user->username }}</td>
+                                                <td>{{ $note->category->name }}</td>
+                                                <td>{{ substr($note->content, 0, 100) }}</td>
                                                 <td>
                                                     <a href="/not/{{ $note->id }}"><i class="fa fa-eye"></i></a>
                                                 </td>
