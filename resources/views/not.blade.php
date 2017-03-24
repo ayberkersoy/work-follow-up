@@ -38,7 +38,7 @@
                             </td>
                             <td>
                                 <p>
-                                    {{ $note->fromUser->username }}
+                                    {{ $note->user->username }}
                                 </p>
                             </td>
                         </tr>
@@ -50,7 +50,7 @@
                             </td>
                             <td>
                                 <p>
-                                    {{ $note->user->username }}
+                                    {{ $note->to_user->username }}
                                 </p>
                             </td>
                         </tr>
@@ -62,7 +62,7 @@
                             </td>
                             <td>
                                 <p>
-                                    {{ $note->note->category->name }}
+                                    {{ $note->category->name }}
                                 </p>
                             </td>
                         </tr>
@@ -74,11 +74,11 @@
                             </td>
                             <td>
                                 <p>
-                                    {{ $note->note->content }}
+                                    {{ $note->content }}
                                 </p>
                             </td>
                         </tr>
-                        @if(!$note->note->discovery_id == 0)
+                        @if(!$note->discovery_content_id == 0)
                         <tr>
                             <td>
                                 <p>
@@ -96,12 +96,12 @@
                                         <td>Toplam Tutar</td>
                                     </tr>
                                     <tr>
-                                        <td>{{ $note->note->dis->job }}</td>
-                                        <td>{{ $note->note->dis->description }}</td>
-                                        <td>{{ $note->note->dis->amount }}</td>
-                                        <td>{{ $note->note->dis->unit }}</td>
-                                        <td>{{ $note->note->dis->unit_price }}</td>
-                                        <td>{{ $note->note->dis->amount*$note->note->dis->unit_price }}</td>
+                                        <td>{{ $note->note->job }}</td>
+                                        <td>{{ $note->note->description }}</td>
+                                        <td>{{ $note->note->amount }}</td>
+                                        <td>{{ $note->note->unit }}</td>
+                                        <td>{{ $note->note->unit_price }}</td>
+                                        <td>{{ $note->note->total }}</td>
                                     </tr>
                                 </table>
                             </td>
@@ -109,11 +109,13 @@
                         @endif
                         <tr>
                             <td>
-                                @if($note->note->status == 0)
-                                    <form action="/notlar/{{ $note->note->id }}" method="post">
+                                @if($note->status == 0)
+                                    <form action="/notlar/{{ $note->id }}" method="post">
                                         {{ csrf_field() }}
                                         <button type="submit" class="btn btn-success">Onayla</button>
                                     </form>
+                                @else
+                                    <p><span style="font-style: italic">{{ $note->completed->username }} tarafından tamamlandı.</span></p>
                                 @endif
                             </td>
                         </tr>

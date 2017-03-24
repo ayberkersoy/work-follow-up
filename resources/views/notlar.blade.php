@@ -57,16 +57,16 @@
                         </tfoot>
                         <tbody>
                         @foreach($notes as $note)
-                            @if($note->note->status == 0)
+                            @if($note->status == 0)
                                 <tr>
-                                    <td>{{ $note->note->id }}</td>
-                                    <td>{{ $note->fromUser->username }}</td>
+                                    <td>{{ $note->id }}</td>
                                     <td>{{ $note->user->username }}</td>
-                                    <td>{{ $note->note->category->name }}</td>
-                                    <td>{{ substr($note->note->content, 0, 100) }}</td>
+                                    <td>{{ $note->to_user->username }}</td>
+                                    <td>{{ $note->category->name }}</td>
+                                    <td>{{ substr($note->content, 0, 100) }}</td>
                                     <td>
 
-                                        <form action="/notlar/{{ $note->note->id }}" method="post">
+                                        <form action="/notlar/{{ $note->id }}" method="post">
                                             {{ csrf_field() }}
                                             <a href="/not/{{ $note->id }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                             <button class="btn btn-success" type="submit"><i class="fa fa-check"></i></button>

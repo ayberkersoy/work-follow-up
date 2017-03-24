@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Note;
 use App\NoteCategory;
+use App\ProgressNote;
 use App\User;
 use App\UserNote;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class NoteController extends Controller
     public function index()
     {
 
-        $notes = UserNote::all();
+        $notes = ProgressNote::all();
         return view('notlar', compact('notes'));
     }
 
@@ -68,7 +69,7 @@ class NoteController extends Controller
      */
     public function show($id)
     {
-        $note = UserNote::find($id);
+        $note = ProgressNote::find($id);
         return view('not', compact('note'));
     }
 
