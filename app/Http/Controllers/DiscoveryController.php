@@ -166,7 +166,9 @@ class DiscoveryController extends Controller
 
     public function destroyProgress($id, $project_id)
     {
-        DiscoveryContent::find($id)->delete();
+        $content = DiscoveryContent::find($id);
+        $content->status = 0;
+        $content->save();
         $discovery = Discovery::where('project_id', $project_id)->get();
         return back()->withInput();
     }
@@ -204,5 +206,20 @@ class DiscoveryController extends Controller
             });
 
         })->download('xlsx');
+    }
+
+    public function trash()
+    {
+        $discoveries = DiscoveryContent::where('status', 0)->get();
+
+        return view('cop-kutusu', compact('discoveries'));
+    }
+
+    public function unDo(Request $request)
+    {
+        $discovery = DiscoveryContent::find($request->id);
+        $discovery->status = 1;
+        $discovery->save();
+        return back();
     }
 }

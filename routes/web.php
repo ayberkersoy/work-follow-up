@@ -82,6 +82,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('hakedis-notlar/{id}', 'ProgressController@done');
 
     Route::post('hakedis-alt/{id}/success', 'ProgressController@success');
+
+    Route::get('cop-kutusu', 'DiscoveryController@trash');
+    Route::post('cop-kutusu/{id}', 'DiscoveryController@unDo');
 });
 
 Auth::routes();

@@ -149,6 +149,7 @@
                     <ul class="treeview-menu">
                         <li><a href="/hakedis-ekle"><i class="fa fa-circle-o"></i> Hakediş Ekle</a></li>
                         <li><a href="/hakedisler"><i class="fa fa-circle-o"></i> Hakediş Gör</a></li>
+                        <li><a href="/cop-kutusu"><i class="fa fa-circle-o"></i> Silinenler</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -174,11 +175,6 @@
                         <li><a href="/kullanici-ekle"><i class="fa fa-circle-o"></i> Kullanıcı Ekle</a></li>
                         <li><a href="/kullanicilar"><i class="fa fa-circle-o"></i> Kullanıcı Düzenle/Sil</a></li>
                     </ul>
-                </li>
-                <li class="treeview">
-                    <a href="/satin-alma">
-                        <i class="fa fa-dollar"></i> <span>Satın Alma</span>
-                    </a>
                 </li>
                 <li class="treeview">
                     <a href="/cikis">
